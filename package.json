@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "particles.js": "^2.0.0",
+    "react-tilt": "^0.1.4",
+    "tachyons": "^4.12.0"
+  }
+}
