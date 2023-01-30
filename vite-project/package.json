@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clarifai-nodejs-grpc": "^8.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tsparticles-engine": "^2.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

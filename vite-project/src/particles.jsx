@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import Particles from 'react-particles-js';
+import Particles from 'particles.js';
 
 export default function Particle(){
     return(
