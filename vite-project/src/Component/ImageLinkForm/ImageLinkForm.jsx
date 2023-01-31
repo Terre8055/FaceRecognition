@@ -8,12 +8,21 @@ import './ILF.css'
 export default function ImageLinkForm(){
     const[input, setStateInput] = React.useState("")
     
+    
     function onInputChange(event){
         setStateInput(event.target.value)
     }
 
     function onButtonSubmit(){
         console.log('click')
+        const USER_ID = 'clarifai';
+    // Your PAT (Personal Access Token) can be found in the portal under Authentification
+    const PAT = '28bb347c520849b28634977bc093327a';
+    const APP_ID = 'main';
+    // Change these to whatever model and image URL you want to use
+    const MODEL_ID = 'general-image-recognition';
+    const MODEL_VERSION_ID = 'aa7f35c01e0642fda5cf400f543e7c40';    
+    const IMAGE_URL = input;
             
         const raw = JSON.stringify({
             "user_app_id": {
@@ -24,7 +33,7 @@ export default function ImageLinkForm(){
                 {
                     "data": {
                         "image": {
-                            "url": input
+                            "url": IMAGE_URL
                         }
                     }
                 }
@@ -44,9 +53,11 @@ export default function ImageLinkForm(){
         // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
         // this will default to the latest version_id
         
-        fetch(`https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`, requestOptions)
+        fetch('https://api.clarifai.com/v2/models/general-image-recognition/outputs', requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => {
+                return result
+            })
             .catch(error => console.log('error', error));
     
     }
@@ -61,6 +72,11 @@ export default function ImageLinkForm(){
                     <button type="submit"  className="w-30 grow f4 link ph3 pv2 dib white bg-light-purple" onClick={onButtonSubmit}>
                         Detect
                     </button> 
+                </div>
+            </div>
+            <div className="center ma">
+                <div>
+                    <img src={input} alt="image" height='auto' width='250px' />
                 </div>
             </div>
         </div>
