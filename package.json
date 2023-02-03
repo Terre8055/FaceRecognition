@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "clarifai-nodejs-grpc": "^8.0.0",
+    "netlify": "^13.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsparticles-engine": "^2.8.0"
