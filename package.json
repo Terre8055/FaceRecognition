@@ -3,5 +3,24 @@
     "particles.js": "^2.0.0",
     "react-tilt": "^0.1.4",
     "tachyons": "^4.12.0"
-  }
+  },
+  "name": "facerecognition",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terre8055/FaceRecognition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Terre8055/FaceRecognition/issues"
+  },
+  "homepage": "https://github.com/Terre8055/FaceRecognition#readme",
+  "keywords": [],
+  "description": ""
 }
