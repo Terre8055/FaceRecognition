@@ -39,6 +39,8 @@ export default function ImageLinkForm() {
         },
         body: raw
     };
+    // fetch(`https://api.clarifai.com/v2/models/celebrity-face-recognition/versions/0676ebddd5d6413ebdaa101570295a39/outputs`, requestOptions)
+
 
     // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
     // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs

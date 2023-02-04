@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-export default function Navigation(){
+export default function Navigation({handleSignIn}){
     return (
         <nav style={
             {
@@ -13,7 +13,7 @@ export default function Navigation(){
                 top: 0, 
                 right: 20
             }}>
-            <p className="f3 link dim black underline pa3 pointer">
+            <p  onClick={()=>handleSignIn("SignIn")} className="f3 link dim black underline pa3 pointer">
                 Sign Out
             </p>
         </nav>
