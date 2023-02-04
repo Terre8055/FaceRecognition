@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigation from './Component/Navigation/Navigation'
 import Logo from './Component/Logo/Logo'
-import ImageLinkForm from './Component/ImageLinkForm/ImageLinkForm'
+// import ImageLinkForm from './Component/ImageLinkForm/ImageLinkForm'
 
 import './App.css'
 import SignIn from './Component/SignIn/SignIn'
@@ -23,7 +23,7 @@ export default function App(){
       : <div>
             <Navigation handleSignIn={handleSignIn}/>
             <Logo />
-            <ImageLinkForm />
+            {/* <ImageLinkForm /> */}
           </div>
       }
     </div>
