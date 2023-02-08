@@ -1,23 +1,37 @@
 import React from "react";
 import './SignIn.css'
 
+/*onSubmit used when the form element is submited
+*call the handleSubmit function to check the fields
+*if fields are inputed call handleSignIn function passed as prop
+*/
+
 export default function SignIn({handleSignIn}){
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    
   
     const handleSubmit = (event) => {
-      event.preventDefault();
+      event.preventDefault();//this method is called to prevent the default nature of the form element
       if (!email || !password) {
         alert("Email and password must be filled out.");
         return;
       }
-      handleSignIn("home");
+      handleSignIn("home");//home parameter is passed to the prop function to redirect the route in app.jsxx
     };
+
+    /* redirectPage function used to create a reroute to the SignUp/Register component. 
+    *see APP.jsx for handleSignIn definition
+    */
+
+    const redirectPage = () => { 
+      handleSignIn("Register")
+    }
   
     return (
       <article className= "shadow-5 br3" >
         <main className="pa4 white-50">
-          <form className="measure center" onSubmit={handleSubmit}>
+          <form className="measure center" onSubmit={handleSubmit} method="post">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               {/* <legend className="f2 fw6 ph0 mh0 ttu">Sign In</legend> */}
               <div className="mt3">
@@ -56,7 +70,7 @@ export default function SignIn({handleSignIn}){
               />
             </div>
             <div className="lh-copy mt3">
-              <a href="#0" className="f5 link dim red db ttu">Register</a>   
+              <p className="f5 link dim red db ttu pointer" onClick={redirectPage}>Register</p>   
             </div>
           </form>
         </main>

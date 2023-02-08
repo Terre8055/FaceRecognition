@@ -1,5 +1,8 @@
 import React from "react";
 
+/*handleSignIn function is passed as prop in the Navigation
+*component to re-route page to signIn when the SignOut button is clicked
+*/
 
 
 
