@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDom from 'react-dom'
 import Navigation from './Component/Navigation/Navigation'
 import Logo from './Component/Logo/Logo'
 import ImageLinkForm from './Component/ImageLinkForm/ImageLinkForm'
@@ -17,9 +18,15 @@ export default function App(){
 
   const[Route, setRoute] = React.useState("SignIn")
 
-  function handleSignIn(newRoute){
+  const handleSignIn = (newRoute) =>{
     setRoute(newRoute);
   }
+  
+  // React.useEffect(() => {
+  //   fetch('http://localhost:3000/')
+  //    .then(resp => resp.json())
+  //    .then(data => console.log(data))
+  // }, [])
 
   return(
     <div className='App'>

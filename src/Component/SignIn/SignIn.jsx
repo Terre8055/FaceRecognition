@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from 'react-dom'
 import './SignIn.css'
 
 /*onSubmit used when the form element is submited
@@ -10,15 +11,42 @@ export default function SignIn({handleSignIn}){
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     
+    /*This is a functional component in ReactJS that contains a form submit handler. 
+    *The handleSubmit function is called when the form is submitted.
+    *it checks if the email and password fields are filled out, and if not, it displays an alert saying "Email and password must be filled out.
+    *If the fields are filled, the function handleSignIn("home") is called, passing the parameter "home" to it. 
+    */
   
     const handleSubmit = (event) => {
+      
       event.preventDefault();//this method is called to prevent the default nature of the form element
       if (!email || !password) {
         alert("Email and password must be filled out.");
         return;
       }
-      handleSignIn("home");//home parameter is passed to the prop function to redirect the route in app.jsxx
-    };
+      // handleSignIn("home");//home parameter is passed to the prop function to redirect the route in app.jsxx
+      // console.log(password)
+      
+      fetch('http://localhost:3000/signIn',{ //Post request to endpoint
+        method: 'post',
+        headers:{'Content-Type':'application/json'}, 
+        body: JSON.stringify({ //stringify body to server
+          email: email,
+          password: password
+        })
+      })
+      .then(response => response.json())  //response we recieve from server to be stringified
+      // .then(data => console.log(data))   //Check for response 
+      .then(data => {
+        data === "Success"? handleSignIn("home") //if matches the response, reroute to Home
+        : alert("Credentials Error")  //if credentials are wrong and do not match database
+      })
+    }
+
+   
+
+   
+   
 
     /* redirectPage function used to create a reroute to the SignUp/Register component. 
     *see APP.jsx for handleSignIn definition
