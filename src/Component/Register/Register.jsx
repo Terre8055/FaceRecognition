@@ -12,10 +12,31 @@ export default function Register({handleSignIn}){
         alert("Fields must be filled out.");
         return;
       }
-      handleSignIn("SignIn");//home parameter is passed to the prop function to redirect the route in app.jsxx
+        //   handleSignIn("SignIn");//home parameter is passed to the prop function to redirect the route in app.jsxx
+      fetch('http://localhost:3000/register',{ //Post request to endpoint
+        method: 'post',
+        headers:{'Content-Type':'application/json'}, 
+        body: JSON.stringify({ //stringify body to server
+          name : name,
+          email: email,
+          password: password
+        })
+      })
+      .then(response => response.json())  //response we recieve from server to be stringified
+      .then(data => { 
+            const user = data.find(d => d.email === email || d.name === name); //loop through the response from the database
+            if (user){
+                alert("success"); //user found alert success and reroute to signIn page
+                handleSignIn("SignIn");
+            }else{
+                alert("Registration Failed"); //User details not logged error msg
+            }
+         })  
+
+         //TODO: Create Database to store fields
     };
     return(
-        <article class="shadow-5 br3">
+        <article className="shadow-5 br3">
             <main className="pa4 white-80">
                 <form action="sign-up_submit" method="post" accept-charset="utf-8" onSubmit={handleSubmit}>
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
