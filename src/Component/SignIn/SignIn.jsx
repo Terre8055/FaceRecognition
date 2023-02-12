@@ -35,12 +35,20 @@ export default function SignIn({handleSignIn}){
           password: password
         })
       })
-      .then(response => response.json())  //response we recieve from server to be stringified
-      // .then(data => console.log(data))   //Check for response 
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })  
       .then(data => {
-        data === "Success"? handleSignIn("home") //if matches the response, reroute to Home
-        : alert("Credentials Error")  //if credentials are wrong and do not match database
+        handleSignIn('home');
       })
+      .catch(error => {
+        alert("error");
+        console.error(error);
+      });
+      
     }
 
    

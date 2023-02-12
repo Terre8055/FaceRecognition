@@ -22,18 +22,19 @@ export default function Register({handleSignIn}){
           password: password
         })
       })
-      .then(response => response.json())  //response we recieve from server to be stringified
-      .then(data => { 
-            const user = data.find(d => d.email === email || d.name === name); //loop through the response from the database
-            if (user){
-                alert("success"); //user found alert success and reroute to signIn page
-                handleSignIn("SignIn");
-            }else{
-                alert("Registration Failed"); //User details not logged error msg
-            }
-         })  
-
-         //TODO: Create Database to store fields
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })  
+      .then(data => {
+        handleSignIn("SignIn");
+      })
+      .catch(error => {
+        alert("error");
+        console.error(error);
+      });
     };
     return(
         <article className="shadow-5 br3">
